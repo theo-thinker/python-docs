@@ -1,15 +1,15 @@
 <template>
   <div class="animated-logo" @mouseover="startAnimation" @mouseout="stopAnimation">
     <div class="logo-container" :style="{ transform: `rotate(${rotation}deg)` }">
-      <img :src="logoUrl" alt="Python Logo" class="logo-image" />
+      <img :src="logoUrl" alt="Python Logo" class="logo-image"/>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import {ref, onMounted, onUnmounted} from 'vue';
 // 导入SVG图片
-import logoUrl from '../assets/logo.svg';
+import logoUrl from '../../../../public/logo.svg';
 
 const rotation = ref(0);
 let animationFrame = null;
@@ -18,12 +18,12 @@ let animating = false;
 
 const animate = () => {
   if (!animating) return;
-  
+
   rotation.value += 0.5 * direction;
-  
+
   if (rotation.value > 10) direction = -1;
   if (rotation.value < -10) direction = 1;
-  
+
   animationFrame = requestAnimationFrame(animate);
 };
 
@@ -36,18 +36,18 @@ const startAnimation = () => {
 const stopAnimation = () => {
   animating = false;
   cancelAnimationFrame(animationFrame);
-  
+
   // 平滑回到初始位置
   const resetAnimation = () => {
     if (Math.abs(rotation.value) < 0.5) {
       rotation.value = 0;
       return;
     }
-    
+
     rotation.value = rotation.value * 0.9;
     animationFrame = requestAnimationFrame(resetAnimation);
   };
-  
+
   resetAnimation();
 };
 

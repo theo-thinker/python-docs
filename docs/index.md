@@ -7,7 +7,7 @@ hero:
   text: "从基础到高级的全面学习指南"
   tagline: 帮助您掌握最新的 Python 编程技术
   image:
-    src: /.vitepress/theme/assets/logo.svg
+    src: /logo.svg
     alt: Python Logo
   actions:
     - theme: brand
