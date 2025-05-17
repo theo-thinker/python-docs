@@ -9,7 +9,7 @@
 <script setup>
 import {ref, onMounted, onUnmounted} from 'vue';
 // 导入SVG图片
-import logoUrl from '../../../../public/logo.svg';
+import logoUrl from '../../../public/logo.svg';
 
 const rotation = ref(0);
 let animationFrame = null;
